@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>명준현 집 예약 프로그램</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f0f8ff;
+      padding: 30px;
+      max-width: 600px;
+      margin: auto;
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+
+    form {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+
+    button {
+      margin-top: 20px;
+      background-color: #4caf50;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    #result {
+      margin-top: 20px;
+      font-weight: bold;
+      color: green;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>명준현 집 예약 프로그램</h1>
+
+  <form id="reservationForm">
+    <label for="name">예약자 이름</label>
+    <input type="text" id="name" name="name" required>
+
+    <label for="date">예약 날짜</label>
+    <input type="date" id="date" name="date" required>
+
+    <label for="memo">메모 (선택)</label>
+    <textarea id="memo" name="memo" rows="4" placeholder="요청 사항이나 비고를 입력하세요."></textarea>
+
+    <button type="submit">예약하기</button>
+  </form>
+
+  <div id="result"></div>
+
+  <script>
+    const form = document.getElementById('reservationForm');
+    const result = document.getElementById('result');
+
+    form.addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      const name = document.getElementById('name').value;
+      const date = document.getElementById('date').value;
+
+      if (name && date) {
+        result.textContent = `✅ ${name}님의 예약이 ${date}로 접수되었습니다!`;
+        form.reset();
+      } else {
+        result.textContent = '⚠️ 모든 필수 항목을 입력해주세요.';
+      }
+    });
+  </script>
+
+</body>
+</html>
